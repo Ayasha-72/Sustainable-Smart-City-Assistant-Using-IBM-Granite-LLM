@@ -1,4 +1,8 @@
 streamlit
 pandas
+numpy
 matplotlib
-ibm-watsonx-ai
+scikit-learn
+requests
+ibm-watson-machine-learning
+
