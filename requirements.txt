@@ -1,5 +1,8 @@
 streamlit
 pandas
 matplotlib
-ibm-watsonx-ai
+scikit-learn
+requests
 python-dotenv
+ibm-watsonx-ai
+
