@@ -1,17 +1,24 @@
-from ibm_watsonx_ai.foundation_models import ModelInference
+import os
+from dotenv import load_dotenv
 from ibm_watsonx_ai import Credentials
+from ibm_watsonx_ai.foundation_models import ModelInference
 
-creds = Credentials(api_key="cjhxM8OWLyjtVflsSDuTDb4TycWNRYAl3xMkcHbuuFq4", url="https://us-south.ml.cloud.ibm.com")
+load_dotenv()
+
+creds = Credentials(
+    api_key=os.getenv("WATSONX_API_KEY"),
+    url=os.getenv("WATSONX_URL")
+)
 
 model = ModelInference(
     model_id="ibm/granite-3-8b-instruct",
     credentials=creds,
-    project_id="245d62b5-7b2f-477f-8bf1-ece30f3fa579"
+    project_id=os.getenv("WATSONX_PROJECT_ID")
 )
 
 def generate_feedback_response(user_input: str) -> str:
     prompt = f"Citizen complaint: {user_input}\nResponse:"
-    res = model.generate_text(prompt=prompt)
-    return res
+    response = model.generate_text(prompt=prompt)
+    return response
 
 
